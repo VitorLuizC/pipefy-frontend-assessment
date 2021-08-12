@@ -1,6 +1,7 @@
+import type { ReactElement } from 'react';
 import './App.css';
 
-function App() {
+function App(): ReactElement {
   return (
     <div className="App">
       <header className="App-header">
