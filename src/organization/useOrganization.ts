@@ -1,4 +1,4 @@
-import type Organization from './Organization';
+import type Organization from './types/Organization';
 import { useContext } from 'react';
 import OrganizationContext from './OrganizationContext';
 

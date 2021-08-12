@@ -27,10 +27,8 @@ describe('OrganizationProvider | component | integration test', () => {
   describe("when environment variable that provides organization id isn't setted", () => {
     it('throws an error', () => {
       const spy = jest.spyOn(console, 'error').mockImplementation(() => {
-        // There's no reason to see console error in those tests.
+        // There's no reason to see console error in this test.
       });
-
-      const organizationId = process.env.REACT_APP_PIPEFY_ORGANIZATION_ID;
 
       delete process.env.REACT_APP_PIPEFY_ORGANIZATION_ID;
 
@@ -44,8 +42,6 @@ describe('OrganizationProvider | component | integration test', () => {
       expect(() => render(<OrganizationProvider />)).toThrow(error);
 
       spy.mockRestore();
-
-      process.env.REACT_APP_PIPEFY_ORGANIZATION_ID = organizationId;
     });
   });
 });

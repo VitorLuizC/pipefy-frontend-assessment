@@ -1,5 +1,5 @@
+import type Organization from './types/Organization';
 import { createContext } from 'react';
-import type Organization from './Organization';
 
 export type OrganizationContextValue = {
   organization: Organization;
