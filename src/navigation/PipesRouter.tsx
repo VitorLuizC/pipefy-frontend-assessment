@@ -2,10 +2,7 @@ import { Fragment, ReactElement } from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import { PIPE_CARD_PATH, PIPE_PATH, NOT_FOUND_ERROR_PATH, PIPES_PATHS } from './paths';
 import Pipes from '../pages/pipes/Pipes';
-
-function Pipe(): null {
-  return null;
-}
+import Pipe from '../pages/pipe/Pipe';
 
 function PipeCard(): null {
   return null;
