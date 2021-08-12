@@ -4,7 +4,6 @@ import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import OrganizationProvider from './organization/OrganizationProvider';
 
 const client = new ApolloClient({
   uri: process.env.REACT_APP_PIPEFY_API_URL || '',
@@ -18,9 +17,7 @@ const client = new ApolloClient({
 ReactDOM.render(
   <React.StrictMode>
     <ApolloProvider client={client}>
-      <OrganizationProvider>
-        <App />
-      </OrganizationProvider>
+      <App />
     </ApolloProvider>
   </React.StrictMode>,
   document.getElementById('root')
