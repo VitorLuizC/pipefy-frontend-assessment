@@ -1,14 +1,16 @@
+import type { ReactElement } from 'react';
 import { render } from '@testing-library/react';
 import OrganizationProvider from './OrganizationProvider';
 import useOrganization from './useOrganization';
+import normalize from '../utils/normalize';
 
-function OrganizationId() {
+function OrganizationId(): ReactElement {
   const organization = useOrganization();
   return <span>{organization.id}</span>;
 }
 
 describe('OrganizationProvider | component | integration test', () => {
-  it('throws an error', () => {
+  it("enables the consumption of the organization's state", () => {
     const organizationId = Math.random().toString();
 
     process.env.REACT_APP_PIPEFY_ORGANIZATION_ID = organizationId;
@@ -32,7 +34,14 @@ describe('OrganizationProvider | component | integration test', () => {
 
       delete process.env.REACT_APP_PIPEFY_ORGANIZATION_ID;
 
-      expect(() => render(<OrganizationProvider />)).toThrow(Error);
+      const error = new Error(
+        normalize`
+          There is no way to start the application without setting the
+          environment variable 'REACT_APP_PIPEFY_ORGANIZATION_ID'.
+        `
+      );
+
+      expect(() => render(<OrganizationProvider />)).toThrow(error);
 
       spy.mockRestore();
 
