@@ -5,6 +5,7 @@ import GET_CARD_LIST_QUERY, {
   GetPipeListData,
   GetPipeListVariables
 } from './graphql/GET_CARD_LIST_QUERY';
+import Modal from '../../components/modal/Modal';
 
 type Props = RouteComponentProps<{
   pipeId: string;
@@ -50,7 +51,7 @@ function Pipe(props: Props): ReactElement {
   }, [data, pipeId, fetchMore]);
 
   return (
-    <div>
+    <Modal>
       <ul>
         {data?.allCards.edges.map((edge) => (
           <li key={edge.node.id}>
@@ -62,7 +63,7 @@ function Pipe(props: Props): ReactElement {
       {data?.allCards.pageInfo.hasNextPage && (
         <button onClick={showMore} disabled={loading}>Show more</button>
       )}
-    </div>
+    </Modal>
   );
 }
 
